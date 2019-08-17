@@ -53,6 +53,7 @@ using namespace std::chrono;
 void MinerThread(int deviceId, info_t * info, std::vector<double>* hashrates, std::vector<int>* tstamps)
 {
     CUDA_CALL(cudaSetDevice(deviceId));
+    CUDA_CALL(cudaSetDeviceFlags(cudaDeviceScheduleBlockingSync));
 
     char threadName[20];
     sprintf(threadName, "GPU %i miner", deviceId);
